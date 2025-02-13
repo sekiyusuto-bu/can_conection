@@ -16,23 +16,18 @@ private:
   void controller_callback(const sensor_msgs::msg::Joy & msg) const
   {
     if(msg.buttons[7]){
-      can_setting_->publish(can_conection::solenoid_utils::to_high_mode(0));
-      can_setting_->publish(can_conection::solenoid_utils::to_high_mode(1));
+      can_setting_->publish(can_conection::solenoid_utils::to_high_mode());
     }
     if(msg.buttons[6]){
       can_setting_->publish(can_conection::solenoid_utils::to_low_mode());
     }
-    
-    auto message = robomas_plugins::msg::Frame{};
 
     if(msg.buttons[2] == true){
-      message.data[0] = 1;
+      can_setting_->publish(can_conection::solenoid_utils::to_air_mode());
     }
     if(msg.buttons[3] == true){
-      message.data[1] = 1;
+      can_setting_->publish(can_conection::solenoid_utils::to_right_mode());
     }
-
-    can_setting_->publish(message);
   } 
   
 
