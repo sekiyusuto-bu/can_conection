@@ -2,14 +2,14 @@
 #include <robomas_plugins/msg/frame.hpp>
 
 namespace can_conection::solenoid_utils{
-    inline auto to_high_mode(std::uint16_t can_index) -> robomas_plugins::msg::Frame{
+    inline auto to_high_mode() -> robomas_plugins::msg::Frame{
     robomas_plugins::msg::Frame message{};
     message.id = 0x250;
     message.is_rtr = false;
     message.is_extended = false;
     message.is_error = false;
-    message.dlc = 2;
-    message.data[can_index] = 0;
+    message.dlc = 8;
+    message.data[0] = 1;
     return message;
     }
 
@@ -19,7 +19,30 @@ namespace can_conection::solenoid_utils{
     message.is_rtr = false;
     message.is_extended = false;
     message.is_error = false;
-    message.dlc = 0;
+    message.dlc = 8;
+    message.data[1] = 1;
+    return message;
+    }
+
+    inline auto to_air_mode() -> robomas_plugins::msg::Frame{
+    robomas_plugins::msg::Frame message{};
+    message.id = 0x251;
+    message.is_rtr = false;
+    message.is_extended = false;
+    message.is_error = false;
+    message.dlc = 8;
+    message.data[0] = 1;
+    return message;
+    }
+    
+    inline auto to_right_mode() -> robomas_plugins::msg::Frame {
+    robomas_plugins::msg::Frame message{};
+    message.id = 0x251;
+    message.is_rtr = false;
+    message.is_extended = false;
+    message.is_error = false;
+    message.dlc = 8;
+    message.data[1] = 1;
     return message;
     }
 }
