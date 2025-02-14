@@ -28,8 +28,7 @@ private:
       can_setting_->publish(can_conection::solenoid_utils::to_right_mode());
     }
     else{
-      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode(0x250));
-      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode(0x251));
+      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode());
     }
   } 
   
