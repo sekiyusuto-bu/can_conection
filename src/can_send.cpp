@@ -18,15 +18,18 @@ private:
     if(msg.buttons[7]){
       can_setting_->publish(can_conection::solenoid_utils::to_high_mode());
     }
-    if(msg.buttons[6]){
+    else if(msg.buttons[6]){
       can_setting_->publish(can_conection::solenoid_utils::to_low_mode());
     }
-
-    if(msg.buttons[2] == true){
+    else if(msg.buttons[2] == true){
       can_setting_->publish(can_conection::solenoid_utils::to_air_mode());
     }
-    if(msg.buttons[3] == true){
+    else if(msg.buttons[3] == true){
       can_setting_->publish(can_conection::solenoid_utils::to_right_mode());
+    }
+    else{
+      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode(0x250));
+      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode(0x251));
     }
   } 
   

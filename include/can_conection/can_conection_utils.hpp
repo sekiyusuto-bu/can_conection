@@ -45,4 +45,16 @@ namespace can_conection::solenoid_utils{
     message.data[1] = 1;
     return message;
     }
+
+    inline auto to_zero_mode(std::uint16_t can_id) -> robomas_plugins::msg::Frame {
+    robomas_plugins::msg::Frame message{};
+    message.id = can_id;
+    message.is_rtr = false;
+    message.is_extended = false;
+    message.is_error = false;
+    message.dlc = 8;
+    message.data[0] = 0;
+    message.data[1] = 0;
+    return message;
+    }
 }
