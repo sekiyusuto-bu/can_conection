@@ -18,10 +18,10 @@ private:
     if(msg.buttons[7]){
       can_setting_->publish(can_conection::solenoid_utils::to_high_mode());
     }
-    else if(msg.buttons[6]){
+    if(msg.buttons[6]){
       can_setting_->publish(can_conection::solenoid_utils::to_low_mode());
     }
-    else if(msg.buttons[2] == true){
+    if(msg.buttons[2] == true){
       can_setting_->publish(can_conection::solenoid_utils::to_air_mode());
     }
     else if(msg.buttons[3] == true){
