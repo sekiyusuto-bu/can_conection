@@ -16,20 +16,23 @@ private:
   void controller_callback(const sensor_msgs::msg::Joy & msg) const
   {
     if(msg.buttons[7]){
-      can_setting_->publish(can_conection::solenoid_utils::to_high_mode());
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x250,1,0));
     }
     if(msg.buttons[6]){
-      can_setting_->publish(can_conection::solenoid_utils::to_low_mode());
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x250,0,1));
     }
     if(msg.buttons[2] == true){
-      can_setting_->publish(can_conection::solenoid_utils::to_air_mode());
-    }
-    else if(msg.buttons[3] == true){
-      can_setting_->publish(can_conection::solenoid_utils::to_right_mode());
-    }
-    else{
-      can_setting_->publish(can_conection::solenoid_utils::to_zero_mode());
-    }
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x251,1,0));
+    }//エアシリンダー
+    if(msg.buttons[3] == true){
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x251,0,1));
+    }//エアシリンダー
+    if(msg.buttons[10] == true){
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x252,1,0));
+    }//LED
+    if(msg.buttons[9] == true){
+      can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x252,0,1));
+    }//LED
   } 
   
 
