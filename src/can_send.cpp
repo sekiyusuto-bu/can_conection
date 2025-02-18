@@ -21,16 +21,16 @@ private:
     else if(msg.buttons[6]){
       can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x250,0));
     }
-    if(msg.buttons[2] == true){
+    if(msg.buttons[2]){
       can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x251,1));
     }//エアシリンダー
-    else if(msg.buttons[3] == true){
+    else if(msg.buttons[3]){
       can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x251,0));
     }//エアシリンダー
-    if(msg.buttons[10] == true){
+    if(msg.buttons[10]){
       can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x252,1));
     }//LED
-    else if(msg.buttons[9] == true){
+    else if(msg.buttons[9]){
       can_setting_->publish(can_conection::solenoid_utils::to_can_mode(0x252,0));
     }//LED
   } 
